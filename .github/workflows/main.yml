@@ -19,6 +19,6 @@ jobs:
           pip install Flask
       - name: Start Flask server
         run: |
-          python -m flask run --host=0.0.0.0 &
+          python -m flask --app server run &
           echo "Waiting for Flask server to start"
           sleep 30
