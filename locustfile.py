@@ -1,5 +1,6 @@
 from locust import HttpUser, TaskSet, task, between
 
+
 class SimpleTasks(TaskSet):
     @task(1)
     def home(self):
@@ -27,6 +28,17 @@ class SimpleTasks(TaskSet):
         payload = {"message": "Hello, Locust!"}
         self.client.post("/echo", json=payload)
 
+
 class SimpleUser(HttpUser):
+    weight = 2
     tasks = [SimpleTasks]
     wait_time = between(1, 5)  # Simulate a wait time between requests
+
+
+class HeavyUser(HttpUser):
+    weight = 98
+    tasks = [SimpleTasks]
+    wait_time = between(6, 10)
+
+
+
