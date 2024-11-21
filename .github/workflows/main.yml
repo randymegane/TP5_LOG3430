@@ -24,4 +24,4 @@ jobs:
           sleep 30
       - name: Run Locust tests
         run: |
-          locust --headless --users 10000 --spawn-rate 100 --host http://127.0.0.1:5000/
+         locust -f locustfile.py --headless --users 10000 --spawn-rate 100 --host http://127.0.0.1:5000/
